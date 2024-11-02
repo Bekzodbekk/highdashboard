@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+option go_package = "genproto/debtpb";
+
+service DebtService{
+    rpc CreateDebt (CreateDebtReq) returns (Resp){}
+    rpc UpdateDebt (UpdateDebtReq) returns (Resp){}
+    rpc DeleteDebt (DeleteDebtReq) returns (Resp){}
+    rpc GetDebtById (GetDebtByIdReq) returns (Resp){}
+    rpc GetDebtByFilter (GetDebtByFilterReq) returns (GetDebtByFilterResp){}
+}
+
+message Debt{
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    int64 jshshir = 5;
+    string address = 6;
+    float price = 7;
+    float price_paid = 8;
+    string acquaintance = 9; // Tanishlari
+    string collateral = 10;  // Garovga berilgan narsalar
+    string deadline = 11;
+    DebtCUD DebtCUD = 12;
+}
+
+message DebtCUD{
+    string created_at = 1;
+    string updated_at = 2;
+    int64 deleted_at = 3;
+}
+
+
+
+// Create Debt
+message CreateDebtReq{
+    string first_name = 1;
+    string last_name = 2;
+    string phone_number = 3;
+    int64 jshshir = 4;
+    string address = 5;
+    float price = 6;
+    float price_paid = 7;
+    string acquaintance = 8; // Tanishlari
+    string collateral = 9;  // Garovga berilgan narsalar
+    string deadline = 10;
+}
+
+// Update Debt
+message UpdateDebtReq{
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    int64 jshshir = 5;
+    string address = 6;
+    float price = 7;
+    float price_paid = 8;
+    string acquaintance = 9; // Tanishlari
+    string collateral = 10;  // Garovga berilgan narsalar
+    string deadline = 11;
+}
+
+// Delete Debt
+message DeleteDebtReq{
+    string id = 1;
+}
+
+// Get Debt By ID
+message GetDebtByIdReq{
+    string id = 1;
+}
+
+// Get Debt By Filter
+message GetDebtByFilterReq{
+    string first_name = 1;
+    string last_name = 2;
+    string phone_number = 3;
+    int64 jshshir = 4;
+    string address = 5;
+    string acquaintance = 6; // Tanishlari
+    string collateral = 7;  // Garovga berilgan narsalar
+    string deadline = 8;
+}
+
+message GetDebtByFilterResp{
+    bool status = 1;
+    string message = 2;
+    repeated Debt debts = 3;
+}
+
+
+
+message Resp{
+    bool status = 1;
+    string message = 2;
+    Debt debt = 3;
+}
