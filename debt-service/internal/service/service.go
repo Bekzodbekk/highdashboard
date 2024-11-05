@@ -7,7 +7,7 @@ import (
 )
 
 type Service struct {
-	*debtpb.UnimplementedDebtServiceServer
+	debtpb.UnimplementedDebtServiceServer
 	repository postgres.DebtRepository
 }
 
