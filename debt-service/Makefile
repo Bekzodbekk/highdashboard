@@ -1,4 +1,4 @@
-DB_URL = postgres://postgres:1@localhost:5432/debtdb?sslmode=disable
+DB_URL = postgres://postgres:1@localhost:5432/onlineshopdashboarddb?sslmode=disable
 
 gen-proto:
 	@protoc \
